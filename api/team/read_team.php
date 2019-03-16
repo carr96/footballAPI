@@ -28,6 +28,12 @@ $team->id = isset($_GET['id']) ? $_GET['id'] : '';
 // Read the team
 $team->readTeam();
 
+// If id is null than id does not exist
+if(is_null($team->id)){
+  echo $error->errorCode(3, 'searching for');
+  exit();
+}
+
 // Create the team array
 $team_arr = [
   'id' => $team->id,
@@ -36,12 +42,6 @@ $team_arr = [
   'loss' => $team->loss,
   'championship' => $team->championship
 ];
-
-// If id is null than id does not exist
-if(is_null($team_arr['id'])){
-  echo $error->errorCode(3); 
-  exit();
-}
 
 // JSON it
 print_r(json_encode($team_arr));

@@ -89,7 +89,7 @@ class Team{
     $this->win = htmlspecialchars(strip_tags($this->win));
     $this->loss = htmlspecialchars(strip_tags($this->loss));
     $this->championship = htmlspecialchars(strip_tags($this->championship));
-    $this->team_ID = htmlspecialchars(strip_tags($this->team_ID));
+    $this->id = htmlspecialchars(strip_tags($this->id));
 
 
     // Bind the data
@@ -97,7 +97,7 @@ class Team{
     $stmt->bindParam(':win', $this->win);
     $stmt->bindParam(':loss', $this->loss);
     $stmt->bindParam(':championship', $this->championship);
-    $stmt->bindParam(':team_ID', $this->team_ID);
+    $stmt->bindParam(':team_ID', $this->id);
 
     // Execute
     if($stmt->execute()){

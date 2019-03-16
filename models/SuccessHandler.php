@@ -5,6 +5,7 @@ class SuccessHandler{
   // 1 - No teams to Display
   // 2 - Team was created
   // 3 - Team was deleted
+  // 4 - Team was updated
 
   public function successCode($code){
     switch($code){
@@ -16,6 +17,9 @@ class SuccessHandler{
         break;
       case $code === 3:
         return $this->codeThree();
+        break;
+      case $code === 4:
+        return $this->codeFour();
         break; 
     }
   }
@@ -42,5 +46,10 @@ class SuccessHandler{
   // Team Deleted
   public function codeThree(){
     return $this->setJSON('Team was deleted');
+  }
+
+  // Team Updated
+  public function codeFour(){
+    return $this->setJSON('Team was updated');
   }
 }

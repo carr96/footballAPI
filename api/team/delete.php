@@ -26,6 +26,14 @@ $error = new ErrorHandler();
 // Get the id for what to delete
 $team->id = isset($_GET['id']) ? $_GET['id'] : '';
 
+// Check if team exists
+$team->readTeam();
+
+if(is_null($team->id)){
+  echo $error->errorCode(3, 'trying to delete');
+  exit();
+}
+
 // Delete the team
 if($team->delete()){
   echo $success->successCode(3);
