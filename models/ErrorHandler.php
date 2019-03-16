@@ -4,6 +4,7 @@ class ErrorHandler{
 
   // 1 - Fatal Error Handler
   // 2 - Name left empty while creating
+  // 3 - ID is null when searching for team
 
   public function errorCode($code){
     switch($code){
@@ -13,6 +14,9 @@ class ErrorHandler{
       case $code === 2:
         return $this->codeTwo();
         break;
+      case $code === 3:
+        return $this->codeThree();
+        break; 
     }
   }
 
@@ -34,5 +38,10 @@ class ErrorHandler{
   // Name left empty while creating
   public function codeTwo(){
     return $this->setJSON(2, 'Please fill out the name field in order to create a team');
+  }
+
+  // ID is null when searching for team
+  public function codeThree(){
+    return $this->setJSON(3, 'The Team you are searching for does not exist');
   }
 }
