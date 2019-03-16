@@ -50,5 +50,5 @@ if($num > 0){
 }
 else{
   // No teams to display
-  echo $success->;
+  echo $success->successCode(1);
 }
