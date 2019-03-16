@@ -108,4 +108,26 @@ class Team{
       return false;
     }
   }
+
+  public function delete(){
+    $query = 'DELETE FROM '.$this->table.' WHERE team_ID = ?';
+
+    // // Prepare Statment
+    $stmt = $this->con->prepare($query);
+
+    // sanitize the id
+    $this->id = htmlspecialchars(strip_tags($this->id));
+
+    // Bind the id
+    $stmt->bindParam(1, $this->id);
+
+    // Execute
+    if($stmt->execute()){
+      return true;
+    } else{
+      // Print Error if something goes wrong
+      printf("Error: %s.\n", $stmt->error);
+      return false;
+    }
+  }
 }
